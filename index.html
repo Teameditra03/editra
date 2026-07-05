@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editra — Motion Design & Video Editing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ======== NAVIGATION ======== -->
+  <nav class="navbar" id="navbar">
+    <a href="#" class="nav-logo">Editra.</a>
+    <div class="nav-links" id="navLinks">
+      <a href="#showreel">Showreel</a>
+      <a href="#works">Works</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#process">Process</a>
+      <a href="#" class="nav-outreach" id="openOutreach">Outreach</a>
+      <a href="#contact" class="nav-cta">Get in Touch</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- ======== HERO SECTION ======== -->
+  <section class="hero" id="hero">
+    <div class="hero-gradient-blob blob-1"></div>
+    <div class="hero-gradient-blob blob-2"></div>
+    <div class="hero-gradient-blob blob-3"></div>
+
+    <div class="hero-content">
+      <p class="hero-tag">Motion Design & Video Editing</p>
+      <h1 class="hero-title">
+        Crafting Scroll-Stopping<br>
+        <em>Visuals</em> & <em>Cinematic</em> Edits
+      </h1>
+      <p class="hero-subtitle">
+        Motion graphics that turn attention into engagement.<br>
+        Clean storytelling. Modern design. Unforgettable content.
+      </p>
+      <div class="hero-buttons">
+        <a href="#works" class="btn btn-primary">View Work</a>
+        <a href="#contact" class="btn btn-secondary">Contact</a>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <img src="hero-laptop.png" alt="Video editing in Premiere Pro" class="hero-laptop-img">
+    </div>
+
+    <div class="hero-scroll-indicator">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ======== FEATURED SHOWREEL ======== -->
+  <section class="showreel" id="showreel">
+    <div class="container">
+      <div class="section-label">Featured</div>
+      <h2 class="section-title">
+        The <em>Showreel</em>
+      </h2>
+      <div class="showreel-video-wrapper">
+        <div class="video-container">
+          <div class="video-placeholder" id="showreelPlaceholder">
+            <div class="play-button">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+            </div>
+            <p>Click to play showreel</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== SELECTED WORKS ======== -->
+  <section class="works" id="works">
+    <div class="container">
+      <div class="section-label">Portfolio</div>
+      <h2 class="section-title">
+        Selected <em>Works</em>
+      </h2>
+      <p class="section-desc">A curated collection of recent projects spanning brand films, motion graphics, and social content.</p>
+
+      <div class="works-grid">
+        <div class="work-card" data-index="01">
+          <div class="work-card-inner">
+            <div class="work-thumbnail has-video">
+              <img class="work-thumb" src="thumb-documentary.jpg" alt="Documentary Style">
+              <video class="work-video" muted preload="none" poster="thumb-documentary.jpg">
+                <source src="showreel.mp4" type="video/mp4">
+              </video>
+              <div class="work-overlay">
+                <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              </div>
+            </div>
+            <div class="work-info">
+              <h3>Documentary Style</h3>
+              <span class="work-tag">Documentary</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="work-card" data-index="02">
+          <div class="work-card-inner">
+            <div class="work-thumbnail has-video">
+              <video class="work-video work-video-cover" muted playsinline preload="metadata">
+                <source src="wanda.mp4#t=0.1" type="video/mp4">
+              </video>
+              <div class="work-overlay">
+                <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              </div>
+            </div>
+            <div class="work-info">
+              <h3>Short Form</h3>
+              <span class="work-tag">Cinematic</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="work-card" data-index="03">
+          <div class="work-card-inner">
+            <div class="work-thumbnail has-video">
+              <img class="work-thumb" src="thumb-talking-head.jpg" alt="Talking Head">
+              <video class="work-video" muted preload="none" poster="thumb-talking-head.jpg">
+                <source src="talking-head.mp4" type="video/mp4">
+              </video>
+              <div class="work-overlay">
+                <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              </div>
+            </div>
+            <div class="work-info">
+              <h3>Talking Head</h3>
+              <span class="work-tag">Interview</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="work-card" data-index="04">
+          <div class="work-card-inner">
+            <div class="work-thumbnail has-video">
+              <img class="work-thumb" src="thumb-motion.jpg" alt="Motion Graphics Reel">
+              <video class="work-video" muted preload="none" poster="thumb-motion.jpg">
+                <source src="motion-reel.mp4" type="video/mp4">
+              </video>
+              <div class="work-overlay">
+                <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              </div>
+            </div>
+            <div class="work-info">
+              <h3>Motion Graphics Reel</h3>
+              <span class="work-tag">Motion</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="work-card" data-index="05">
+          <div class="work-card-inner">
+            <div class="work-thumbnail has-video">
+              <img class="work-thumb" src="thumb-ui.jpg" alt="UI Animations">
+              <video class="work-video" muted preload="none" poster="thumb-ui.jpg">
+                <source src="social-campaign.mp4" type="video/mp4">
+              </video>
+              <div class="work-overlay">
+                <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              </div>
+            </div>
+            <div class="work-info">
+              <h3>UI Animations</h3>
+              <span class="work-tag">UI/UX</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="work-card" data-index="06">
+          <div class="work-card-inner">
+            <div class="work-thumbnail has-video">
+              <img class="work-thumb" src="thumb-cinematic.jpg" alt="Cinematic Edit">
+              <video class="work-video" muted preload="none" poster="thumb-cinematic.jpg">
+                <source src="cinematic-edit.mp4" type="video/mp4">
+              </video>
+              <div class="work-overlay">
+                <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              </div>
+            </div>
+            <div class="work-info">
+              <h3>Cinematic Edit</h3>
+              <span class="work-tag">Cinematic</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== ABOUT ======== -->
+  <section class="about" id="about">
+    <div class="about-gradient-blob"></div>
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-left">
+          <div class="section-label">About</div>
+          <h2 class="section-title">
+            Creating Visuals<br>That People <em>Remember</em>
+          </h2>
+        </div>
+        <div class="about-right">
+          <p class="about-intro">
+            I'm <strong>Sai Kiran</strong>, the creator behind <strong>Editra</strong>.
+          </p>
+          <p class="about-text">
+            I specialize in video editing and motion design for brands, creators, and businesses looking to elevate their visual presence through clean storytelling and modern design.
+          </p>
+          <div class="about-skills">
+            <span class="skill-pill">Motion Graphics</span>
+            <span class="skill-pill">Social Media Content</span>
+            <span class="skill-pill">Brand Videos</span>
+            <span class="skill-pill">Promotional Edits</span>
+            <span class="skill-pill">Creative Direction</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== SERVICES ======== -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="section-label">What I Do</div>
+      <h2 class="section-title">
+        Services <em>Offered</em>
+      </h2>
+
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="4" y="8" width="40" height="28" rx="3"/>
+              <polygon points="20,16 32,22 20,28" fill="currentColor" stroke="none"/>
+              <line x1="14" y1="42" x2="34" y2="42"/>
+            </svg>
+          </div>
+          <h3>Video Editing</h3>
+          <p>Professional edits optimized for engagement across every platform.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="24" cy="24" r="18"/>
+              <path d="M24 6 C28 16, 36 20, 42 24 C36 28, 28 32, 24 42 C20 32, 12 28, 6 24 C12 20, 20 16, 24 6Z" fill="currentColor" opacity="0.15"/>
+              <circle cx="24" cy="24" r="6"/>
+            </svg>
+          </div>
+          <h3>Motion Design</h3>
+          <p>Custom animations, dynamic titles, and seamless transitions.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="12" y="4" width="24" height="40" rx="4"/>
+              <circle cx="24" cy="38" r="2"/>
+              <line x1="18" y1="8" x2="30" y2="8"/>
+              <polygon points="20,18 30,23 20,28" fill="currentColor" stroke="none"/>
+            </svg>
+          </div>
+          <h3>Social Content</h3>
+          <p>Short-form content for Instagram, YouTube Shorts, and X.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M6 12 L24 4 L42 12 L42 28 L24 44 L6 28Z"/>
+              <path d="M6 12 L24 20 L42 12" fill="none"/>
+              <line x1="24" y1="20" x2="24" y2="44"/>
+            </svg>
+          </div>
+          <h3>Brand Visuals</h3>
+          <p>Creative assets for campaigns, marketing, and brand storytelling.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== PROCESS ======== -->
+  <section class="process" id="process">
+    <div class="process-gradient-blob"></div>
+    <div class="container">
+      <div class="section-label">How I Work</div>
+      <h2 class="section-title">
+        The <em>Process</em>
+      </h2>
+
+      <div class="process-timeline">
+        <div class="process-step" data-step="01">
+          <div class="step-number">01</div>
+          <div class="step-content">
+            <h3>Discovery</h3>
+            <p>Understanding your goals, audience, and the story you want to tell.</p>
+          </div>
+        </div>
+
+        <div class="process-step" data-step="02">
+          <div class="step-number">02</div>
+          <div class="step-content">
+            <h3>Design</h3>
+            <p>Creating the visual direction, mood boards, and style references.</p>
+          </div>
+        </div>
+
+        <div class="process-step" data-step="03">
+          <div class="step-number">03</div>
+          <div class="step-content">
+            <h3>Edit</h3>
+            <p>Crafting the final story with precision cuts, effects, and sound design.</p>
+          </div>
+        </div>
+
+        <div class="process-step" data-step="04">
+          <div class="step-number">04</div>
+          <div class="step-content">
+            <h3>Deliver</h3>
+            <p>Polished content, optimized and ready to publish across all platforms.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== CONTACT ======== -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="contact-inner">
+        <div class="contact-left">
+          <div class="section-label">Let's Talk</div>
+          <h2 class="section-title">
+            Interested in<br>Working <em>Together?</em>
+          </h2>
+        </div>
+        <div class="contact-right">
+          <div class="contact-links">
+            <a href="mailto:Teameditra@gmail.com" class="contact-link">
+              <span class="contact-link-label">Email</span>
+              <span class="contact-link-value">Teameditra@gmail.com</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+            <a href="https://instagram.com/_editraa" target="_blank" class="contact-link">
+              <span class="contact-link-label">Instagram</span>
+              <span class="contact-link-value">@_editraa</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+            <a href="https://x.com/_editra" target="_blank" class="contact-link">
+              <span class="contact-link-label">X (Twitter)</span>
+              <span class="contact-link-value">@_editra</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== CLIENT OUTREACH MODAL ======== -->
+  <div class="outreach-overlay" id="outreachOverlay">
+    <div class="outreach-modal">
+      <button class="outreach-close" id="outreachClose">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+
+      <div class="outreach-header">
+        <div class="section-label">Outreach Tool</div>
+        <h2 class="outreach-title">Reach Out to <em>Clients</em></h2>
+        <p class="outreach-desc">Generate a professional email to showcase your portfolio. Pick a client type, enter their details, and send.</p>
+      </div>
+
+      <!-- Tabs -->
+      <div class="outreach-tabs">
+        <button class="outreach-tab active" data-tab="compose">Compose</button>
+        <button class="outreach-tab" data-tab="suggestions">Suggested Clients</button>
+        <button class="outreach-tab" data-tab="tracker">Tracker</button>
+      </div>
+
+      <!-- TAB: Compose -->
+      <div class="outreach-panel active" id="panelCompose">
+        <div class="outreach-form">
+          <div class="outreach-row">
+            <div class="outreach-field">
+              <label>Client's Email</label>
+              <input type="email" id="clientEmail" placeholder="client@company.com">
+            </div>
+            <div class="outreach-field">
+              <label>Client's Name</label>
+              <input type="text" id="clientName" placeholder="John / Brand Name">
+            </div>
+          </div>
+
+          <div class="outreach-field">
+            <label>Client Type</label>
+            <div class="outreach-types" id="clientTypes">
+              <button class="type-btn active" data-type="brand">Brand</button>
+              <button class="type-btn" data-type="creator">Creator</button>
+              <button class="type-btn" data-type="agency">Agency</button>
+              <button class="type-btn" data-type="startup">Startup</button>
+              <button class="type-btn" data-type="ecommerce">E-Commerce</button>
+              <button class="type-btn" data-type="realestate">Real Estate</button>
+            </div>
+          </div>
+
+          <div class="outreach-field">
+            <label>Email Type</label>
+            <div class="outreach-types" id="emailTypeSelector">
+              <button class="type-btn active" data-emailtype="initial">First Outreach</button>
+              <button class="type-btn" data-emailtype="followup1">Follow-up (Day 3)</button>
+              <button class="type-btn" data-emailtype="followup2">Follow-up (Day 7)</button>
+            </div>
+          </div>
+
+          <div class="outreach-field">
+            <label>Preview</label>
+            <div class="email-preview" id="emailPreview"></div>
+          </div>
+
+          <div class="outreach-actions">
+            <button class="btn btn-primary" id="sendEmail">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px;margin-right:8px"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              Open in Gmail
+            </button>
+            <button class="btn btn-secondary" id="copyEmail">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px;margin-right:8px"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              Copy Email Text
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB: Suggested Clients -->
+      <div class="outreach-panel" id="panelSuggestions">
+        <div class="suggestions-filter">
+          <button class="type-btn active" data-filter="all">All</button>
+          <button class="type-btn" data-filter="brand">Brands</button>
+          <button class="type-btn" data-filter="creator">Creators</button>
+          <button class="type-btn" data-filter="agency">Agencies</button>
+          <button class="type-btn" data-filter="startup">Startups</button>
+          <button class="type-btn" data-filter="ecommerce">E-Commerce</button>
+        </div>
+        <div class="suggestions-list" id="suggestionsList"></div>
+      </div>
+
+      <!-- TAB: Tracker -->
+      <div class="outreach-panel" id="panelTracker">
+        <div class="tracker-stats" id="trackerStats"></div>
+        <div class="tracker-list" id="trackerList"></div>
+        <div class="tracker-empty" id="trackerEmpty">
+          <p>No outreach logged yet. Send your first email and it'll appear here.</p>
+        </div>
+        <button class="btn btn-secondary" id="clearTracker" style="margin-top:16px;width:100%">Clear All History</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======== FOOTER ======== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <a href="#" class="footer-logo">Editra.</a>
+        <p class="footer-copy">&copy; 2026 Editra. All rights reserved.</p>
+        <div class="footer-socials">
+          <a href="https://instagram.com/_editraa" target="_blank" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="https://x.com/_editra" target="_blank" aria-label="X">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="mailto:Teameditra@gmail.com" aria-label="Email">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,4 12,13 2,4"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
