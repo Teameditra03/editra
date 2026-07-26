@@ -36,15 +36,15 @@
     "thumbnail": "thumb-motion.jpg"
   },
   {
-    "title": "UI Animations",
-    "tag": "UI/UX",
-    "video": "social-campaign.mp4",
-    "thumbnail": "thumb-ui.jpg"
-  },
-  {
     "title": "Cinematic Edit",
     "tag": "Cinematic",
     "video": "cinematic-edit.mp4",
     "thumbnail": "thumb-cinematic.jpg"
+  },
+  {
+    "title": "UI Animations",
+    "tag": "UI/UX",
+    "video": "social-campaign.mp4",
+    "thumbnail": "thumb-ui.jpg"
   }
 ]
