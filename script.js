@@ -2,7 +2,88 @@
    EDITRA — Interactions
    ======================================== */
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+
+  // ---------- Load Videos from JSON ----------
+  async function loadVideos() {
+    const grid = document.getElementById('worksGrid');
+    if (!grid) return;
+
+    try {
+      const resp = await fetch('videos.json?v=' + Date.now());
+      const videos = await resp.json();
+
+      grid.innerHTML = videos.map((v, i) => {
+        const idx = String(i + 1).padStart(2, '0');
+        const thumbHtml = v.thumbnail
+          ? `<img class="work-thumb" src="${v.thumbnail}" alt="${v.title}">`
+          : '';
+        const posterAttr = v.thumbnail ? `poster="${v.thumbnail}"` : '';
+
+        return `
+          <div class="work-card" data-index="${idx}">
+            <div class="work-card-inner">
+              <div class="work-thumbnail has-video">
+                ${thumbHtml}
+                <video class="work-video" muted preload="none" ${posterAttr}>
+                  <source src="${v.video}" type="video/mp4">
+                </video>
+                <div class="work-overlay">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                </div>
+              </div>
+              <div class="work-info">
+                <h3>${v.title}</h3>
+                <span class="work-tag">${v.tag}</span>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      initWorkCards();
+    } catch (e) {
+      console.error('Failed to load videos:', e);
+    }
+  }
+
+  function initWorkCards() {
+    document.querySelectorAll('.work-card-inner').forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width - 0.5) * 8;
+        const y = ((e.clientY - rect.top) / rect.height - 0.5) * -8;
+        card.style.transform = `translateY(-6px) perspective(800px) rotateY(${x}deg) rotateX(${y}deg)`;
+      });
+      card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+    });
+
+    document.querySelectorAll('.work-card').forEach(card => {
+      const video = card.querySelector('.work-video');
+      if (!video) return;
+      card.addEventListener('mouseenter', () => { video.currentTime = 0; video.play().catch(() => {}); });
+      card.addEventListener('mouseleave', () => { video.pause(); video.currentTime = 0; });
+      card.addEventListener('click', () => {
+        video.muted = false; video.controls = true;
+        if (video.requestFullscreen) video.requestFullscreen();
+        else if (video.webkitRequestFullscreen) video.webkitRequestFullscreen();
+        video.play();
+      });
+      video.addEventListener('fullscreenchange', () => {
+        if (!document.fullscreenElement) { video.muted = true; video.controls = false; video.pause(); video.currentTime = 0; }
+      });
+    });
+
+    document.querySelectorAll('.work-card').forEach(el => {
+      el.classList.add('reveal');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      observer.observe(el);
+    });
+  }
+
+  await loadVideos();
 
   // ---------- Scroll Reveal ----------
   const revealTargets = document.querySelectorAll(
@@ -155,19 +236,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ---------- Work Cards — Tilt Effect ----------
-  document.querySelectorAll('.work-card-inner').forEach(card => {
-    card.addEventListener('mousemove', (e) => {
-      const rect = card.getBoundingClientRect();
-      const x = ((e.clientX - rect.left) / rect.width - 0.5) * 8;
-      const y = ((e.clientY - rect.top) / rect.height - 0.5) * -8;
-      card.style.transform = `translateY(-6px) perspective(800px) rotateY(${x}deg) rotateX(${y}deg)`;
-    });
-
-    card.addEventListener('mouseleave', () => {
-      card.style.transform = '';
-    });
-  });
+  // Work card tilt & video handlers are initialized in initWorkCards() after JSON load
 
   // ---------- Cursor Glow (desktop only) ----------
   if (window.matchMedia('(pointer: fine)').matches) {

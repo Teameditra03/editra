@@ -1,0 +1,50 @@
+[
+  {
+    "title": "Apple Style",
+    "tag": "Apple",
+    "video": "showreel.mp4",
+    "thumbnail": "thumb-documentary.jpg"
+  },
+  {
+    "title": "Documentary Style",
+    "tag": "Documentary",
+    "video": "meta-video.mp4",
+    "thumbnail": "thumb-meta.jpg"
+  },
+  {
+    "title": "Short Form",
+    "tag": "Cinematic",
+    "video": "wanda.mp4",
+    "thumbnail": ""
+  },
+  {
+    "title": "Talking Head",
+    "tag": "Interview",
+    "video": "talking-head.mp4",
+    "thumbnail": "thumb-talking-head.jpg"
+  },
+  {
+    "title": "Apple Mograph",
+    "tag": "Motion",
+    "video": "comp-video.mp4",
+    "thumbnail": "thumb-comp.jpg"
+  },
+  {
+    "title": "Motion Graphics Reel",
+    "tag": "Motion",
+    "video": "motion-reel.mp4",
+    "thumbnail": "thumb-motion.jpg"
+  },
+  {
+    "title": "UI Animations",
+    "tag": "UI/UX",
+    "video": "social-campaign.mp4",
+    "thumbnail": "thumb-ui.jpg"
+  },
+  {
+    "title": "Cinematic Edit",
+    "tag": "Cinematic",
+    "video": "cinematic-edit.mp4",
+    "thumbnail": "thumb-cinematic.jpg"
+  }
+]
