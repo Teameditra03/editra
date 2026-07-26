@@ -30,16 +30,16 @@
     "thumbnail": "thumb-comp.jpg"
   },
   {
-    "title": "Motion Graphics Reel",
-    "tag": "Motion",
-    "video": "motion-reel.mp4",
-    "thumbnail": "thumb-motion.jpg"
-  },
-  {
     "title": "Cinematic Edit",
     "tag": "Cinematic",
     "video": "cinematic-edit.mp4",
     "thumbnail": "thumb-cinematic.jpg"
+  },
+  {
+    "title": "Motion Graphics Reel",
+    "tag": "Motion",
+    "video": "motion-reel.mp4",
+    "thumbnail": "thumb-motion.jpg"
   },
   {
     "title": "UI Animations",
