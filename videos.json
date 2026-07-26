@@ -46,5 +46,11 @@
     "tag": "UI/UX",
     "video": "social-campaign.mp4",
     "thumbnail": "thumb-ui.jpg"
+  },
+  {
+    "title": "College",
+    "tag": "College vibes",
+    "video": "comp-1.mp4",
+    "thumbnail": ""
   }
 ]
