@@ -755,4 +755,264 @@ Teameditra@gmail.com`
     }
   });
 
+  // ========================================
+  // ADMIN PANEL — Manage Videos via GitHub API
+  // ========================================
+  const REPO_OWNER = 'Teameditra03';
+  const REPO_NAME = 'editra';
+  const VIDEOS_PATH = 'videos.json';
+
+  const adminOverlay = document.getElementById('adminOverlay');
+  const adminClose = document.getElementById('adminClose');
+  const adminLoginBtn = document.getElementById('adminLoginBtn');
+  const adminLogout = document.getElementById('adminLogout');
+  const adminToken = document.getElementById('adminToken');
+  const adminLogin = document.getElementById('adminLogin');
+  const adminDashboard = document.getElementById('adminDashboard');
+  const adminVideoList = document.getElementById('adminVideoList');
+  const adminStatus = document.getElementById('adminStatus');
+  const addVideoBtn = document.getElementById('addVideoBtn');
+
+  let adminPAT = localStorage.getItem('editra_admin_pat') || '';
+  let videosData = [];
+  let videosSHA = '';
+
+  // Secret: press Ctrl+Shift+A to open admin
+  document.addEventListener('keydown', (e) => {
+    if (e.ctrlKey && e.shiftKey && e.key === 'A') {
+      e.preventDefault();
+      adminOverlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      if (adminPAT) { unlockDashboard(); }
+    }
+  });
+
+  if (adminClose) {
+    adminClose.addEventListener('click', () => {
+      adminOverlay.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  }
+
+  adminOverlay?.addEventListener('click', (e) => {
+    if (e.target === adminOverlay) {
+      adminOverlay.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  });
+
+  function showStatus(msg, type) {
+    adminStatus.textContent = msg;
+    adminStatus.className = 'admin-status ' + type;
+  }
+
+  // Login
+  adminLoginBtn?.addEventListener('click', () => {
+    const token = adminToken.value.trim();
+    if (!token) return;
+    adminPAT = token;
+    localStorage.setItem('editra_admin_pat', token);
+    unlockDashboard();
+  });
+
+  // Logout
+  adminLogout?.addEventListener('click', () => {
+    adminPAT = '';
+    localStorage.removeItem('editra_admin_pat');
+    adminDashboard.style.display = 'none';
+    adminLogin.style.display = 'block';
+    adminToken.value = '';
+    showStatus('', '');
+  });
+
+  async function unlockDashboard() {
+    adminLogin.style.display = 'none';
+    adminDashboard.style.display = 'block';
+    showStatus('Loading videos...', 'loading');
+    await fetchVideosJSON();
+  }
+
+  async function githubAPI(path, method, body) {
+    const resp = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${path}`, {
+      method: method || 'GET',
+      headers: {
+        'Authorization': `token ${adminPAT}`,
+        'Accept': 'application/vnd.github.v3+json',
+        ...(body ? { 'Content-Type': 'application/json' } : {})
+      },
+      ...(body ? { body: JSON.stringify(body) } : {})
+    });
+    return resp;
+  }
+
+  async function fetchVideosJSON() {
+    try {
+      const resp = await githubAPI(VIDEOS_PATH);
+      if (!resp.ok) throw new Error('Failed to fetch');
+      const data = await resp.json();
+      videosSHA = data.sha;
+      videosData = JSON.parse(atob(data.content));
+      renderAdminList();
+      showStatus(`${videosData.length} videos loaded`, 'success');
+    } catch (e) {
+      showStatus('Error loading videos. Check your PAT.', 'error');
+    }
+  }
+
+  async function saveVideosJSON(message) {
+    const content = btoa(unescape(encodeURIComponent(JSON.stringify(videosData, null, 2))));
+    const resp = await githubAPI(VIDEOS_PATH, 'PUT', {
+      message: message || 'Update videos via admin panel',
+      content: content,
+      sha: videosSHA
+    });
+    if (resp.ok) {
+      const data = await resp.json();
+      videosSHA = data.content.sha;
+      return true;
+    }
+    return false;
+  }
+
+  async function uploadFileToRepo(filename, base64Content, message) {
+    let sha = null;
+    const checkResp = await githubAPI(filename);
+    if (checkResp.ok) {
+      const existing = await checkResp.json();
+      sha = existing.sha;
+    }
+
+    const body = {
+      message: message || `Upload ${filename}`,
+      content: base64Content,
+      ...(sha ? { sha } : {})
+    };
+
+    const resp = await githubAPI(filename, 'PUT', body);
+    return resp.ok;
+  }
+
+  function renderAdminList() {
+    adminVideoList.innerHTML = videosData.map((v, i) => `
+      <div class="admin-video-item" data-idx="${i}">
+        <span class="admin-video-num">${i + 1}</span>
+        <span class="admin-video-name">${v.title}</span>
+        <span class="admin-video-tag">${v.tag}</span>
+        <div class="admin-video-actions">
+          <button class="admin-btn-sm" onclick="adminMoveVideo(${i}, -1)" title="Move up">↑</button>
+          <button class="admin-btn-sm" onclick="adminMoveVideo(${i}, 1)" title="Move down">↓</button>
+          <button class="admin-btn-sm delete" onclick="adminDeleteVideo(${i})" title="Delete">✕</button>
+        </div>
+      </div>
+    `).join('');
+
+    const posSelect = document.getElementById('newVideoPosition');
+    if (posSelect) {
+      const customOptions = videosData.map((v, i) => `<option value="${i}">After "${v.title}"</option>`).join('');
+      posSelect.innerHTML = `<option value="start">At the beginning</option>${customOptions}<option value="end">At the end</option>`;
+      posSelect.value = 'end';
+    }
+  }
+
+  // Global functions for inline onclick
+  window.adminMoveVideo = async function(idx, dir) {
+    const newIdx = idx + dir;
+    if (newIdx < 0 || newIdx >= videosData.length) return;
+    [videosData[idx], videosData[newIdx]] = [videosData[newIdx], videosData[idx]];
+    renderAdminList();
+    showStatus('Saving order...', 'loading');
+    const ok = await saveVideosJSON(`Reorder: swap ${idx + 1} and ${newIdx + 1}`);
+    showStatus(ok ? 'Order saved!' : 'Failed to save', ok ? 'success' : 'error');
+  };
+
+  window.adminDeleteVideo = async function(idx) {
+    const name = videosData[idx].title;
+    if (!confirm(`Delete "${name}" from the portfolio?`)) return;
+    videosData.splice(idx, 1);
+    renderAdminList();
+    showStatus('Deleting...', 'loading');
+    const ok = await saveVideosJSON(`Remove video: ${name}`);
+    showStatus(ok ? `"${name}" removed!` : 'Failed to delete', ok ? 'success' : 'error');
+    if (ok) loadVideos();
+  };
+
+  // Add Video
+  addVideoBtn?.addEventListener('click', async () => {
+    const title = document.getElementById('newVideoTitle').value.trim();
+    const tag = document.getElementById('newVideoTag').value.trim();
+    const fileInput = document.getElementById('newVideoFile');
+    const position = document.getElementById('newVideoPosition').value;
+
+    if (!title || !tag) { showStatus('Please fill in title and tag', 'error'); return; }
+    if (!fileInput.files.length) { showStatus('Please select a video file', 'error'); return; }
+
+    const file = fileInput.files[0];
+    if (file.size > 25 * 1024 * 1024) {
+      showStatus('File too large! Max 25MB for direct upload. Upload larger files via github.com/Teameditra03/editra → Add file', 'error');
+      return;
+    }
+
+    const filename = file.name.toLowerCase().replace(/\s+/g, '-');
+    addVideoBtn.disabled = true;
+    addVideoBtn.textContent = 'Uploading...';
+
+    const progress = document.getElementById('uploadProgress');
+    const bar = document.getElementById('uploadBar');
+    const text = document.getElementById('uploadText');
+    progress.style.display = 'block';
+    bar.style.width = '20%';
+    text.textContent = 'Reading file...';
+
+    try {
+      const base64 = await new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result.split(',')[1]);
+        reader.readAsDataURL(file);
+      });
+
+      bar.style.width = '50%';
+      text.textContent = 'Uploading video to GitHub...';
+      showStatus('Uploading video file...', 'loading');
+
+      const uploaded = await uploadFileToRepo(filename, base64, `Add video: ${filename}`);
+      if (!uploaded) { showStatus('Failed to upload video', 'error'); return; }
+
+      bar.style.width = '80%';
+      text.textContent = 'Updating playlist...';
+
+      const newEntry = { title, tag, video: filename, thumbnail: '' };
+
+      if (position === 'start') {
+        videosData.unshift(newEntry);
+      } else if (position === 'end') {
+        videosData.push(newEntry);
+      } else {
+        const posIdx = parseInt(position);
+        videosData.splice(posIdx + 1, 0, newEntry);
+      }
+
+      const saved = await saveVideosJSON(`Add video: ${title}`);
+
+      bar.style.width = '100%';
+      text.textContent = 'Done!';
+
+      if (saved) {
+        showStatus(`"${title}" added successfully! Site will update in 2-3 minutes.`, 'success');
+        document.getElementById('newVideoTitle').value = '';
+        document.getElementById('newVideoTag').value = '';
+        fileInput.value = '';
+        renderAdminList();
+        loadVideos();
+      } else {
+        showStatus('Video uploaded but failed to update playlist', 'error');
+      }
+    } catch (e) {
+      showStatus('Error: ' + e.message, 'error');
+    } finally {
+      addVideoBtn.disabled = false;
+      addVideoBtn.textContent = 'Upload & Add Video';
+      setTimeout(() => { progress.style.display = 'none'; bar.style.width = '0%'; }, 3000);
+    }
+  });
+
 });

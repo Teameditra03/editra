@@ -366,6 +366,74 @@
     </div>
   </div>
 
+  <!-- ======== ADMIN PANEL ======== -->
+  <div class="admin-overlay" id="adminOverlay">
+    <div class="admin-panel">
+      <button class="outreach-close" id="adminClose">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+
+      <!-- Login Screen -->
+      <div id="adminLogin">
+        <div class="admin-header">
+          <h2 class="outreach-title">🔐 Admin Panel</h2>
+          <p class="outreach-desc">Enter your GitHub PAT to manage videos.</p>
+        </div>
+        <div class="outreach-field">
+          <label>GitHub Personal Access Token</label>
+          <input type="password" id="adminToken" placeholder="ghp_...">
+        </div>
+        <button class="btn btn-primary" id="adminLoginBtn" style="width:100%;margin-top:16px">Unlock Admin</button>
+      </div>
+
+      <!-- Dashboard -->
+      <div id="adminDashboard" style="display:none">
+        <div class="admin-header">
+          <h2 class="outreach-title">📂 Manage Videos</h2>
+          <p class="outreach-desc">Add, remove, or reorder your portfolio videos.</p>
+        </div>
+
+        <div class="admin-status" id="adminStatus"></div>
+
+        <!-- Current Videos List -->
+        <div class="admin-video-list" id="adminVideoList"></div>
+
+        <!-- Add New Video Form -->
+        <div class="admin-add-section">
+          <h3 style="font-size:1rem;font-weight:700;margin-bottom:16px">➕ Add New Video</h3>
+          <div class="outreach-row">
+            <div class="outreach-field">
+              <label>Video Title</label>
+              <input type="text" id="newVideoTitle" placeholder="e.g. Brand Promo">
+            </div>
+            <div class="outreach-field">
+              <label>Tag / Category</label>
+              <input type="text" id="newVideoTag" placeholder="e.g. Branding">
+            </div>
+          </div>
+          <div class="outreach-field">
+            <label>Video File (MP4, max 25MB for direct upload)</label>
+            <input type="file" id="newVideoFile" accept="video/mp4" class="admin-file-input">
+          </div>
+          <div class="outreach-field">
+            <label>Position</label>
+            <select id="newVideoPosition" class="admin-select">
+              <option value="end">Add at the end</option>
+              <option value="start">Add at the beginning</option>
+            </select>
+          </div>
+          <div class="admin-progress" id="uploadProgress" style="display:none">
+            <div class="admin-progress-bar" id="uploadBar"></div>
+            <span id="uploadText">Uploading...</span>
+          </div>
+          <button class="btn btn-primary" id="addVideoBtn" style="width:100%;margin-top:12px">Upload & Add Video</button>
+        </div>
+
+        <button class="btn btn-secondary" id="adminLogout" style="width:100%;margin-top:20px">🔒 Lock Admin</button>
+      </div>
+    </div>
+  </div>
+
   <!-- ======== FOOTER ======== -->
   <footer class="footer">
     <div class="container">
