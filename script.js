@@ -807,12 +807,27 @@ Teameditra@gmail.com`
   }
 
   // Login
-  adminLoginBtn?.addEventListener('click', () => {
+  adminLoginBtn?.addEventListener('click', async () => {
     const token = adminToken.value.trim();
     if (!token) return;
-    adminPAT = token;
-    localStorage.setItem('editra_admin_pat', token);
-    unlockDashboard();
+    adminLoginBtn.textContent = 'Checking...';
+    adminLoginBtn.disabled = true;
+
+    try {
+      const testResp = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}`, {
+        headers: { 'Authorization': `token ${token}`, 'Accept': 'application/vnd.github.v3+json' }
+      });
+      if (!testResp.ok) throw new Error('Invalid token or no access');
+
+      adminPAT = token;
+      localStorage.setItem('editra_admin_pat', token);
+      unlockDashboard();
+    } catch (e) {
+      alert('❌ Token is invalid or does not have access to the repo. Make sure you selected "repo" scope when creating the PAT.');
+    } finally {
+      adminLoginBtn.textContent = 'Unlock Admin';
+      adminLoginBtn.disabled = false;
+    }
   });
 
   // Logout
@@ -848,14 +863,24 @@ Teameditra@gmail.com`
   async function fetchVideosJSON() {
     try {
       const resp = await githubAPI(VIDEOS_PATH);
-      if (!resp.ok) throw new Error('Failed to fetch');
+      if (!resp.ok) {
+        const errData = await resp.json().catch(() => ({}));
+        throw new Error(errData.message || `HTTP ${resp.status}`);
+      }
       const data = await resp.json();
       videosSHA = data.sha;
-      videosData = JSON.parse(atob(data.content));
+      const decoded = decodeURIComponent(escape(atob(data.content.replace(/\n/g, ''))));
+      videosData = JSON.parse(decoded);
       renderAdminList();
-      showStatus(`${videosData.length} videos loaded`, 'success');
+      showStatus(`✅ ${videosData.length} videos loaded — Ready to manage!`, 'success');
     } catch (e) {
-      showStatus('Error loading videos. Check your PAT.', 'error');
+      showStatus('❌ Error: ' + e.message, 'error');
+      try {
+        const fallback = await fetch('videos.json?v=' + Date.now());
+        videosData = await fallback.json();
+        renderAdminList();
+        showStatus(`⚠️ Loaded ${videosData.length} videos (read-only — PAT issue for saves)`, 'loading');
+      } catch (e2) {}
     }
   }
 
@@ -947,8 +972,8 @@ Teameditra@gmail.com`
     if (!fileInput.files.length) { showStatus('Please select a video file', 'error'); return; }
 
     const file = fileInput.files[0];
-    if (file.size > 25 * 1024 * 1024) {
-      showStatus('File too large! Max 25MB for direct upload. Upload larger files via github.com/Teameditra03/editra → Add file', 'error');
+    if (file.size > 50 * 1024 * 1024) {
+      showStatus('⚠️ File is over 50MB! For large files, upload at github.com/Teameditra03/editra → "Add file" → "Upload files", then add the filename here without choosing a file.', 'error');
       return;
     }
 
