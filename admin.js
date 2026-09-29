@@ -88,6 +88,12 @@ const css = `
 `;
 
 /* ---------------- GitHub API ---------------- */
+const NO_WRITE = `This key isn't allowed to save changes. Make a new key with access to the ${REPO} repo and Contents set to "Read and write", then Lock and unlock again.`;
+function apiError(status, m, isWrite){
+  if (status === 401) m = "Your access key has expired or was removed. Press Lock, then unlock with a new key.";
+  else if (isWrite && (status === 403 || status === 404)) m = NO_WRITE;
+  const err = new Error(m || `GitHub error ${status}`); err.status = status; return err;
+}
 async function gh(path, opts = {}){
   const r = await fetch(path.startsWith("http") ? path : API + path, {
     ...opts,
@@ -96,7 +102,7 @@ async function gh(path, opts = {}){
   });
   if (!r.ok){
     let m = ""; try { m = (await r.json()).message; } catch(e){}
-    const err = new Error(m || `GitHub error ${r.status}`); err.status = r.status; throw err;
+    throw apiError(r.status, m, !!opts.method && opts.method !== "GET");
   }
   return r.status === 204 ? null : r.json();
 }
@@ -122,7 +128,7 @@ function uploadBlob(base64, onProgress){
     x.upload.onprogress = e => { if (e.lengthComputable && onProgress) onProgress(e.loaded / e.total); };
     x.onload = () => {
       if (x.status >= 200 && x.status < 300) res(JSON.parse(x.responseText).sha);
-      else { let m=""; try{ m = JSON.parse(x.responseText).message; }catch(e){} rej(new Error(m || `Upload failed (${x.status})`)); }
+      else { let m=""; try{ m = JSON.parse(x.responseText).message; }catch(e){} rej(apiError(x.status, m || `Upload failed (${x.status})`, true)); }
     };
     x.onerror = () => rej(new Error("Network error while uploading"));
     x.send(JSON.stringify({ content: base64, encoding: "base64" }));
@@ -284,14 +290,16 @@ function renderLogin(){
     <div class="adm-top"><h2><small>Editra · Admin</small>Video manager</h2><button class="b" data-a="close">Close ✕</button></div>
     <div class="adm-card">
       <h3>Unlock once on this device</h3>
-      <p class="hint">Your videos are saved in your GitHub repo, so this panel needs a GitHub access key. You only do this once per device and browser. After that you just open this page and edit.</p>
+      <p class="hint">Only the site owner can make changes. This panel needs an access key from the <b>${OWNER}</b> GitHub account; without one, nothing here can be changed. You only do this once per device and browser.</p>
       <ol class="steps">
-        <li>Open <a href="https://github.com/settings/tokens/new?scopes=repo&description=Editra%20website%20admin" target="_blank" rel="noopener">this GitHub page</a>. You need to be signed in as <b>${OWNER}</b>.</li>
-        <li>Choose an <b>Expiration</b> (for example 1 year), keep the <b>repo</b> box ticked, and press <b>Generate token</b>.</li>
-        <li>Copy the token (it starts with <code>ghp_</code>) and paste it below.</li>
+        <li>Open <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">this GitHub page</a>, signed in as <b>${OWNER}</b>.</li>
+        <li><b>Token name:</b> Editra admin. <b>Expiration:</b> for example 1 year.</li>
+        <li><b>Repository access:</b> choose <b>Only select repositories</b> and pick <b>${REPO}</b>.</li>
+        <li><b>Permissions → Repository permissions → Contents:</b> set to <b>Read and write</b>.</li>
+        <li>Press <b>Generate token</b>, copy it (it starts with <code>github_pat_</code>) and paste it below.</li>
       </ol>
       <div class="grid" style="grid-template-columns:minmax(0,1fr) auto;align-items:end">
-        <label>Access key<input type="password" id="admToken" placeholder="ghp_…" autocomplete="off"></label>
+        <label>Access key<input type="password" id="admToken" placeholder="github_pat_…" autocomplete="off"></label>
         <button class="b pri" data-a="login">Unlock</button>
       </div>
       <p class="hint" style="margin:12px 0 0">The key stays saved only in this browser. Don't unlock on a shared computer, and use Lock when you're done there.</p>
@@ -311,7 +319,7 @@ async function login(){
   status("Checking the key…", "work");
   try{
     const repo = await gh("");
-    if (!repo.permissions || !repo.permissions.push) throw new Error("This key can't edit the editra repo. Make sure the repo box was ticked.");
+    if (!repo.permissions || !repo.permissions.push) throw new Error(`This key doesn't belong to the ${OWNER} account, so it can't edit this site.`);
     try { localStorage.setItem(TOKEN_KEY, t); } catch(e){}
     await openDash();
   }catch(e){
