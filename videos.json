@@ -1,62 +1,15 @@
-[
-  {
-    "title": "Apple Style",
-    "tag": "Apple",
-    "video": "showreel.mp4",
-    "thumbnail": "thumb-documentary.jpg"
-  },
-  {
-    "title": "Documentary Style",
-    "tag": "Documentary",
-    "video": "meta-video.mp4",
-    "thumbnail": "thumb-meta.jpg"
-  },
-  {
-    "title": "Short Form",
-    "tag": "Cinematic",
-    "video": "wanda.mp4",
-    "thumbnail": ""
-  },
-  {
-    "title": "Talking Head",
-    "tag": "Interview",
-    "video": "talking-head.mp4",
-    "thumbnail": "thumb-talking-head.jpg"
-  },
-  {
-    "title": "Apple Mograph",
-    "tag": "Motion",
-    "video": "comp-video.mp4",
-    "thumbnail": "thumb-comp.jpg"
-  },
-  {
-    "title": "Cinematic Edit",
-    "tag": "Cinematic",
-    "video": "cinematic-edit.mp4",
-    "thumbnail": "thumb-cinematic.jpg"
-  },
-  {
-    "title": "Motion Graphics Reel",
-    "tag": "Motion",
-    "video": "motion-reel.mp4",
-    "thumbnail": "thumb-motion.jpg"
-  },
-  {
-    "title": "UI Animations",
-    "tag": "UI/UX",
-    "video": "social-campaign.mp4",
-    "thumbnail": "thumb-ui.jpg"
-  },
-  {
-    "title": "College",
-    "tag": "College vibes",
-    "video": "comp-1.mp4",
-    "thumbnail": ""
-  },
-  {
-    "title": "Editra Special",
-    "tag": "Varsham",
-    "video": "comp-1.mp4",
-    "thumbnail": ""
-  }
-]
+{
+  "showreel": "showreel.mp4",
+  "videos": [
+    { "title": "Apple Style", "tag": "Apple", "type": "motion", "desc": "", "tools": "", "video": "showreel.mp4", "thumbnail": "thumb-documentary.jpg" },
+    { "title": "Documentary Style", "tag": "Documentary", "type": "short", "desc": "", "tools": "", "video": "meta-video.mp4", "thumbnail": "thumb-meta.jpg" },
+    { "title": "Short Form", "tag": "Cinematic", "type": "short", "desc": "", "tools": "", "video": "wanda.mp4", "thumbnail": "" },
+    { "title": "Talking Head", "tag": "Interview", "type": "short", "desc": "", "tools": "", "video": "talking-head.mp4", "thumbnail": "thumb-talking-head.jpg" },
+    { "title": "Apple Mograph", "tag": "Motion", "type": "motion", "desc": "", "tools": "", "video": "comp-video.mp4", "thumbnail": "thumb-comp.jpg" },
+    { "title": "Cinematic Edit", "tag": "Cinematic", "type": "long", "desc": "", "tools": "", "video": "cinematic-edit.mp4", "thumbnail": "thumb-cinematic.jpg" },
+    { "title": "Motion Graphics Reel", "tag": "Motion", "type": "motion", "desc": "", "tools": "", "video": "motion-reel.mp4", "thumbnail": "thumb-motion.jpg" },
+    { "title": "UI Animations", "tag": "UI/UX", "type": "motion", "desc": "", "tools": "", "video": "social-campaign.mp4", "thumbnail": "thumb-ui.jpg" },
+    { "title": "College", "tag": "College vibes", "type": "short", "desc": "", "tools": "", "video": "comp-1.mp4", "thumbnail": "" },
+    { "title": "Editra Special", "tag": "Varsham", "type": "short", "desc": "", "tools": "", "video": "comp-1.mp4", "thumbnail": "" }
+  ]
+}

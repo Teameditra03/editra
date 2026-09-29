@@ -1,460 +1,210 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Editra — Motion Design & Video Editing</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Editra — Sai Kiran Reddy, Video Editor</title>
+<meta name="description" content="Sai Kiran Reddy (Editra) — freelance video editor and motion designer. Short form, long form and motion-driven edits for creators and brands.">
+<meta name="theme-color" content="#0d0e12">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;700;800;900&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="site.css">
 </head>
 <body>
 
-  <!-- ======== NAVIGATION ======== -->
-  <nav class="navbar" id="navbar">
-    <a href="#" class="nav-logo">Editra.</a>
-    <div class="nav-links" id="navLinks">
-      <a href="#showreel">Showreel</a>
-      <a href="#works">Works</a>
-      <a href="#about">About</a>
-      <a href="#services">Services</a>
-      <a href="#process">Process</a>
-      <a href="#" class="nav-outreach" id="openOutreach">Outreach</a>
-      <a href="#contact" class="nav-cta">Get in Touch</a>
-    </div>
-    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-  </nav>
+<nav class="nav" aria-label="Main">
+  <div class="wrap">
+    <a class="logo" href="#top"><span class="dot" aria-hidden="true"></span>EDITRA</a>
+    <ul>
+      <li><a href="#showreel">Showreel</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+    </ul>
+    <a class="btn btn-primary" href="https://calendly.com/saikiranreddy937" target="_blank" rel="noopener">Let's talk</a>
+  </div>
+</nav>
 
-  <!-- ======== HERO SECTION ======== -->
-  <section class="hero" id="hero">
-    <div class="hero-gradient-blob blob-1"></div>
-    <div class="hero-gradient-blob blob-2"></div>
-    <div class="hero-gradient-blob blob-3"></div>
-
-    <div class="hero-content">
-      <p class="hero-tag">Motion Design & Video Editing</p>
-      <h1 class="hero-title">
-        Crafting Scroll-Stopping<br>
-        <em>Visuals</em> & <em>Cinematic</em> Edits
-      </h1>
-      <p class="hero-subtitle">
-        Motion graphics that turn attention into engagement.<br>
-        Clean storytelling. Modern design. Unforgettable content.
-      </p>
-      <div class="hero-buttons">
-        <a href="#works" class="btn btn-primary">View Work</a>
-        <a href="#contact" class="btn btn-secondary">Contact</a>
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="rec-line mono"><span class="rec">Rec</span><span class="tc" id="timecode">00:00:00:00</span><span>· 25 fps</span></div>
+      <h1 class="name"><span class="outline">Sai</span><span>Kiran<span class="cut">.</span></span></h1>
+      <div class="aka">aka <b>EDITRA</b></div>
+      <p class="role">Video Editor <i>/</i> Motion Designer</p>
+      <p class="tagline">I turn raw footage into videos people <em>actually</em> want to watch.</p>
+      <div class="stats">
+        <div class="stat"><b>1<sup>yr</sup></b><span>Freelancing</span></div>
+        <div class="stat"><b>50<sup>+</sup></b><span>Videos edited</span></div>
+        <div class="stat"><b>15<sup>+</sup></b><span>Clients</span></div>
+      </div>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#showreel">Watch showreel
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4l14 8-14 8z"/></svg></a>
+        <a class="btn btn-ghost" href="https://calendly.com/saikiranreddy937" target="_blank" rel="noopener">Let's talk</a>
       </div>
     </div>
 
-    <div class="hero-visual">
-      <img src="hero-laptop.png" alt="Video editing in Premiere Pro" class="hero-laptop-img">
-    </div>
-
-    <div class="hero-scroll-indicator">
-      <span>Scroll</span>
-      <div class="scroll-line"></div>
-    </div>
-  </section>
-
-  <!-- ======== FEATURED SHOWREEL ======== -->
-  <section class="showreel" id="showreel">
-    <div class="container">
-      <div class="section-label">Featured</div>
-      <h2 class="section-title">
-        The <em>Showreel</em>
-      </h2>
-      <div class="showreel-video-wrapper">
-        <div class="video-container">
-          <div class="video-placeholder" id="showreelPlaceholder">
-            <div class="play-button">
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <polygon points="5 3 19 12 5 21 5 3"></polygon>
-              </svg>
+    <div class="card-stage">
+      <button class="pcard" id="pcard" type="button" aria-pressed="false" aria-label="Profile card for Sai Kiran Reddy. Click to flip.">
+        <div class="face front">
+          <div class="pc-top" aria-hidden="true"></div>
+          <div class="pc-body">
+            <div class="pc-photo" aria-hidden="true">SK</div>
+            <div class="pc-id">
+              <small>Crew pass · Editra</small>
+              <h3>Sai Kiran<br>Reddy</h3>
+              <span class="pc-role">VIDEO EDITOR</span>
             </div>
-            <p>Click to play showreel</p>
+            <div class="pc-rows">
+              <div><small>Based in</small><b>India</b></div>
+              <div><small>Status</small><b>Freelance · 2026</b></div>
+              <div class="full"><small>Tools</small>
+                <div class="pc-tools">
+                  <span><i style="background:var(--v1)">Pr</i>Premiere Pro</span>
+                  <span><i style="background:var(--v2)">Ae</i>After Effects</span>
+                </div>
+              </div>
+            </div>
+            <div class="pc-foot"><div class="barcode" aria-hidden="true"></div><span class="tc" id="cardTc">00:00:00:00</span></div>
           </div>
         </div>
+        <div class="face back">
+          <div class="pc-top" aria-hidden="true"></div>
+          <div class="back-in">
+            <div class="aka-big"><span>Also known as</span>Editra</div>
+            <div class="back-stats">
+              <div><b>1 yr</b><small>Freelance</small></div>
+              <div><b>50+</b><small>Videos</small></div>
+              <div><b>15+</b><small>Clients</small></div>
+            </div>
+            <div style="font-size:15px;color:#cfccc6">Short form, long form and motion-driven edits for creators and brands.</div>
+            <div class="open">Open for projects</div>
+          </div>
+        </div>
+      </button>
+      <span class="flip-hint">Move to tilt · Click to flip</span>
+    </div>
+  </div>
+</header>
+
+<section class="reel-sec" id="showreel">
+  <div class="wrap">
+    <div class="reel-head">
+      <h2>Showreel<sup>/2026</sup></h2>
+      <span class="mono" style="color:var(--muted)">Premiere Pro · After Effects</span>
+    </div>
+    <a class="reel" id="reelLink" href="#showreel" aria-label="Play Sai Kiran's 2026 showreel">
+      <div class="footage" aria-hidden="true"></div>
+      <div class="reel-media" id="reelMedia" aria-hidden="true"></div>
+      <div class="scan" aria-hidden="true"></div>
+      <span class="hud tl">Editra · Reel 2026 · 4K</span>
+      <span class="hud tr tc" id="reelTc">00:00:00:00</span>
+      <span class="bigplay" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 3l16 9-16 9z"/></svg></span>
+      <span class="title"><span>Sai Kiran · Video editor / Motion designer</span>Show<br>reel '26</span>
+      <span class="controls" aria-hidden="true">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M5 3l16 9-16 9z"/></svg>
+        <span class="tc">00:00</span><span class="bar"><i></i></span><span class="tc" id="reelDur">--:--</span><span class="hd">HD</span>
+      </span>
+    </a>
+  </div>
+  <div class="timeline" aria-hidden="true">
+    <div class="tl-ruler" id="ruler"></div>
+    <div class="tl-track" data-name="V2"><div class="tl-row" id="trV2"></div></div>
+    <div class="tl-track" data-name="V1"><div class="tl-row" id="trV1"></div></div>
+    <div class="tl-track" data-name="A1"><div class="tl-row" id="trA1"></div></div>
+    <div class="playhead"></div>
+  </div>
+</section>
+
+<main>
+  <section class="sec" id="work">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 class="sec-title">Selected<br><span class="o">work</span></h2>
+        <div class="filters" id="filters" role="group" aria-label="Filter work"></div>
       </div>
+      <div class="works" id="works"><p class="mono" style="color:var(--muted)">Loading work…</p></div>
     </div>
   </section>
 
-  <!-- ======== SELECTED WORKS ======== -->
-  <section class="works" id="works">
-    <div class="container">
-      <div class="section-label">Portfolio</div>
-      <h2 class="section-title">
-        Selected <em>Works</em>
-      </h2>
-      <p class="section-desc">A curated collection of recent projects spanning brand films, motion graphics, and social content.</p>
-
-      <div class="works-grid" id="worksGrid">
-        <!-- Cards are auto-generated from videos.json -->
-      </div>
-    </div>
-  </section>
-
-  <!-- ======== ABOUT ======== -->
-  <section class="about" id="about">
-    <div class="about-gradient-blob"></div>
-    <div class="container">
+  <section class="sec" id="about" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head"><h2 class="sec-title">About</h2></div>
       <div class="about-grid">
-        <div class="about-left">
-          <div class="section-label">About</div>
-          <h2 class="section-title">
-            Creating Visuals<br>That People <em>Remember</em>
-          </h2>
+        <div class="portrait">
+          <span class="initial">SK</span>
+          <div class="cap mono"><span>Cam A · 50mm</span><span>Sai Kiran</span></div>
         </div>
-        <div class="about-right">
-          <p class="about-intro">
-            I'm <strong>Sai Kiran</strong>, the creator behind <strong>Editra</strong>.
-          </p>
-          <p class="about-text">
-            I specialize in video editing and motion design for brands, creators, and businesses looking to elevate their visual presence through clean storytelling and modern design.
-          </p>
-          <div class="about-skills">
-            <span class="skill-pill">Motion Graphics</span>
-            <span class="skill-pill">Social Media Content</span>
-            <span class="skill-pill">Brand Videos</span>
-            <span class="skill-pill">Promotional Edits</span>
-            <span class="skill-pill">Creative Direction</span>
-          </div>
+        <div class="about-copy">
+          <p class="lead">I'm Sai Kiran, <span>a freelance video editor</span> and motion designer.</p>
+          <p>I like taking raw footage and turning it into something that feels <strong>intentional</strong>: better pacing, stronger storytelling, clean motion and sound design.</p>
+          <p>I mainly work with <strong>Premiere Pro</strong> and <strong>After Effects</strong>, creating short-form content, YouTube videos and motion-driven edits for creators and brands.</p>
+          <ul class="tools">
+            <li><b style="background:var(--v1)">Pr</b>Premiere Pro</li>
+            <li><b style="background:var(--v2)">Ae</b>After Effects</li>
+          </ul>
         </div>
+      </div>
+      <div class="still" aria-label="Still learning. Still experimenting. Still making things.">
+        <p>Still learning.</p>
+        <p>Still experimenting.</p>
+        <p>Still making <span>things.</span></p>
       </div>
     </div>
   </section>
 
-  <!-- ======== SERVICES ======== -->
-  <section class="services" id="services">
-    <div class="container">
-      <div class="section-label">What I Do</div>
-      <h2 class="section-title">
-        Services <em>Offered</em>
-      </h2>
-
-      <div class="services-grid">
-        <div class="service-card">
-          <div class="service-icon">
-            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="4" y="8" width="40" height="28" rx="3"/>
-              <polygon points="20,16 32,22 20,28" fill="currentColor" stroke="none"/>
-              <line x1="14" y1="42" x2="34" y2="42"/>
-            </svg>
-          </div>
-          <h3>Video Editing</h3>
-          <p>Professional edits optimized for engagement across every platform.</p>
-        </div>
-
-        <div class="service-card">
-          <div class="service-icon">
-            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="24" cy="24" r="18"/>
-              <path d="M24 6 C28 16, 36 20, 42 24 C36 28, 28 32, 24 42 C20 32, 12 28, 6 24 C12 20, 20 16, 24 6Z" fill="currentColor" opacity="0.15"/>
-              <circle cx="24" cy="24" r="6"/>
-            </svg>
-          </div>
-          <h3>Motion Design</h3>
-          <p>Custom animations, dynamic titles, and seamless transitions.</p>
-        </div>
-
-        <div class="service-card">
-          <div class="service-icon">
-            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="12" y="4" width="24" height="40" rx="4"/>
-              <circle cx="24" cy="38" r="2"/>
-              <line x1="18" y1="8" x2="30" y2="8"/>
-              <polygon points="20,18 30,23 20,28" fill="currentColor" stroke="none"/>
-            </svg>
-          </div>
-          <h3>Social Content</h3>
-          <p>Short-form content for Instagram, YouTube Shorts, and X.</p>
-        </div>
-
-        <div class="service-card">
-          <div class="service-icon">
-            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M6 12 L24 4 L42 12 L42 28 L24 44 L6 28Z"/>
-              <path d="M6 12 L24 20 L42 12" fill="none"/>
-              <line x1="24" y1="20" x2="24" y2="44"/>
-            </svg>
-          </div>
-          <h3>Brand Visuals</h3>
-          <p>Creative assets for campaigns, marketing, and brand storytelling.</p>
-        </div>
+  <section class="sec" id="services" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head"><h2 class="sec-title">What I <span class="o">do</span></h2></div>
+      <ul class="svc-list" id="svcList"></ul>
+      <div class="proc">
+        <div class="step"><h4>Brief</h4><p>A quick call about your goal, audience and references.</p></div>
+        <div class="step"><h4>Rough cut</h4><p>Story and pacing first, so we agree on structure early.</p></div>
+        <div class="step"><h4>Polish</h4><p>Motion graphics, sound design, color and captions.</p></div>
+        <div class="step"><h4>Deliver</h4><p>Final exports sized for every platform you post on.</p></div>
       </div>
     </div>
   </section>
 
-  <!-- ======== PROCESS ======== -->
-  <section class="process" id="process">
-    <div class="process-gradient-blob"></div>
-    <div class="container">
-      <div class="section-label">How I Work</div>
-      <h2 class="section-title">
-        The <em>Process</em>
-      </h2>
-
-      <div class="process-timeline">
-        <div class="process-step" data-step="01">
-          <div class="step-number">01</div>
-          <div class="step-content">
-            <h3>Discovery</h3>
-            <p>Understanding your goals, audience, and the story you want to tell.</p>
-          </div>
-        </div>
-
-        <div class="process-step" data-step="02">
-          <div class="step-number">02</div>
-          <div class="step-content">
-            <h3>Design</h3>
-            <p>Creating the visual direction, mood boards, and style references.</p>
-          </div>
-        </div>
-
-        <div class="process-step" data-step="03">
-          <div class="step-number">03</div>
-          <div class="step-content">
-            <h3>Edit</h3>
-            <p>Crafting the final story with precision cuts, effects, and sound design.</p>
-          </div>
-        </div>
-
-        <div class="process-step" data-step="04">
-          <div class="step-number">04</div>
-          <div class="step-content">
-            <h3>Deliver</h3>
-            <p>Polished content, optimized and ready to publish across all platforms.</p>
-          </div>
-        </div>
+  <section class="cta" id="contact">
+    <div class="wrap">
+      <p class="mono" style="color:var(--muted);margin:0 0 20px">Next up on the timeline</p>
+      <h2>Got raw<br><span>footage?</span><br>Let's talk.</h2>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="https://calendly.com/saikiranreddy937" target="_blank" rel="noopener">Let's talk · Book a call
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn-ghost" href="https://www.instagram.com/_editraa" target="_blank" rel="noopener">DM on Instagram</a>
+        <div class="mail"><span id="email">teameditra@gmail.com</span><button id="copyBtn" type="button">Copy email</button></div>
       </div>
     </div>
   </section>
+</main>
 
-  <!-- ======== CONTACT ======== -->
-  <section class="contact" id="contact">
-    <div class="container">
-      <div class="contact-inner">
-        <div class="contact-left">
-          <div class="section-label">Let's Talk</div>
-          <h2 class="section-title">
-            Interested in<br>Working <em>Together?</em>
-          </h2>
-        </div>
-        <div class="contact-right">
-          <div class="contact-links">
-            <a href="mailto:Teameditra@gmail.com" class="contact-link">
-              <span class="contact-link-label">Email</span>
-              <span class="contact-link-value">Teameditra@gmail.com</span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-            </a>
-            <a href="https://instagram.com/_editraa" target="_blank" class="contact-link">
-              <span class="contact-link-label">Instagram</span>
-              <span class="contact-link-value">@_editraa</span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-            </a>
-            <a href="https://x.com/_editra" target="_blank" class="contact-link">
-              <span class="contact-link-label">X (Twitter)</span>
-              <span class="contact-link-value">@_editra</span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-            </a>
-          </div>
-        </div>
-      </div>
+<footer>
+  <div class="wrap">
+    <span class="brand">EDITRA</span>
+    <div class="socials">
+      <a href="https://www.instagram.com/_editraa" target="_blank" rel="noopener">Instagram @_editraa</a>
+      <a href="https://x.com/_editra" target="_blank" rel="noopener">X @_editra</a>
     </div>
-  </section>
-
-  <!-- ======== CLIENT OUTREACH MODAL ======== -->
-  <div class="outreach-overlay" id="outreachOverlay">
-    <div class="outreach-modal">
-      <button class="outreach-close" id="outreachClose">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-      </button>
-
-      <div class="outreach-header">
-        <div class="section-label">Outreach Tool</div>
-        <h2 class="outreach-title">Reach Out to <em>Clients</em></h2>
-        <p class="outreach-desc">Generate a professional email to showcase your portfolio. Pick a client type, enter their details, and send.</p>
-      </div>
-
-      <!-- Tabs -->
-      <div class="outreach-tabs">
-        <button class="outreach-tab active" data-tab="compose">Compose</button>
-        <button class="outreach-tab" data-tab="suggestions">Suggested Clients</button>
-        <button class="outreach-tab" data-tab="tracker">Tracker</button>
-      </div>
-
-      <!-- TAB: Compose -->
-      <div class="outreach-panel active" id="panelCompose">
-        <div class="outreach-form">
-          <div class="outreach-row">
-            <div class="outreach-field">
-              <label>Client's Email</label>
-              <input type="email" id="clientEmail" placeholder="client@company.com">
-            </div>
-            <div class="outreach-field">
-              <label>Client's Name</label>
-              <input type="text" id="clientName" placeholder="John / Brand Name">
-            </div>
-          </div>
-
-          <div class="outreach-field">
-            <label>Client Type</label>
-            <div class="outreach-types" id="clientTypes">
-              <button class="type-btn active" data-type="brand">Brand</button>
-              <button class="type-btn" data-type="creator">Creator</button>
-              <button class="type-btn" data-type="agency">Agency</button>
-              <button class="type-btn" data-type="startup">Startup</button>
-              <button class="type-btn" data-type="ecommerce">E-Commerce</button>
-              <button class="type-btn" data-type="realestate">Real Estate</button>
-            </div>
-          </div>
-
-          <div class="outreach-field">
-            <label>Email Type</label>
-            <div class="outreach-types" id="emailTypeSelector">
-              <button class="type-btn active" data-emailtype="initial">First Outreach</button>
-              <button class="type-btn" data-emailtype="followup1">Follow-up (Day 3)</button>
-              <button class="type-btn" data-emailtype="followup2">Follow-up (Day 7)</button>
-            </div>
-          </div>
-
-          <div class="outreach-field">
-            <label>Preview</label>
-            <div class="email-preview" id="emailPreview"></div>
-          </div>
-
-          <div class="outreach-actions">
-            <button class="btn btn-primary" id="sendEmail">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px;margin-right:8px"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-              Open in Gmail
-            </button>
-            <button class="btn btn-secondary" id="copyEmail">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px;margin-right:8px"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-              Copy Email Text
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- TAB: Suggested Clients -->
-      <div class="outreach-panel" id="panelSuggestions">
-        <div class="suggestions-filter">
-          <button class="type-btn active" data-filter="all">All</button>
-          <button class="type-btn" data-filter="brand">Brands</button>
-          <button class="type-btn" data-filter="creator">Creators</button>
-          <button class="type-btn" data-filter="agency">Agencies</button>
-          <button class="type-btn" data-filter="startup">Startups</button>
-          <button class="type-btn" data-filter="ecommerce">E-Commerce</button>
-        </div>
-        <div class="suggestions-list" id="suggestionsList"></div>
-      </div>
-
-      <!-- TAB: Tracker -->
-      <div class="outreach-panel" id="panelTracker">
-        <div class="tracker-stats" id="trackerStats"></div>
-        <div class="tracker-list" id="trackerList"></div>
-        <div class="tracker-empty" id="trackerEmpty">
-          <p>No outreach logged yet. Send your first email and it'll appear here.</p>
-        </div>
-        <button class="btn btn-secondary" id="clearTracker" style="margin-top:16px;width:100%">Clear All History</button>
-      </div>
-    </div>
+    <span class="mono tc">© <span id="yr">2026</span> Sai Kiran Reddy</span>
   </div>
+</footer>
 
-  <!-- ======== ADMIN PANEL ======== -->
-  <div class="admin-overlay" id="adminOverlay">
-    <div class="admin-panel">
-      <button class="outreach-close" id="adminClose">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-      </button>
-
-      <!-- Login Screen -->
-      <div id="adminLogin">
-        <div class="admin-header">
-          <h2 class="outreach-title">🔐 Admin Panel</h2>
-          <p class="outreach-desc">Enter your GitHub PAT to manage videos.</p>
-        </div>
-        <div class="outreach-field">
-          <label>GitHub Personal Access Token</label>
-          <input type="password" id="adminToken" placeholder="ghp_...">
-        </div>
-        <button class="btn btn-primary" id="adminLoginBtn" style="width:100%;margin-top:16px">Unlock Admin</button>
-      </div>
-
-      <!-- Dashboard -->
-      <div id="adminDashboard" style="display:none">
-        <div class="admin-header">
-          <h2 class="outreach-title">📂 Manage Videos</h2>
-          <p class="outreach-desc">Add, remove, or reorder your portfolio videos.</p>
-        </div>
-
-        <div class="admin-status" id="adminStatus"></div>
-
-        <!-- Current Videos List -->
-        <div class="admin-video-list" id="adminVideoList"></div>
-
-        <!-- Add New Video Form -->
-        <div class="admin-add-section">
-          <h3 style="font-size:1rem;font-weight:700;margin-bottom:16px">➕ Add New Video</h3>
-          <div class="outreach-row">
-            <div class="outreach-field">
-              <label>Video Title</label>
-              <input type="text" id="newVideoTitle" placeholder="e.g. Brand Promo">
-            </div>
-            <div class="outreach-field">
-              <label>Tag / Category</label>
-              <input type="text" id="newVideoTag" placeholder="e.g. Branding">
-            </div>
-          </div>
-          <div class="outreach-field">
-            <label>Video File (MP4, max 25MB for direct upload)</label>
-            <input type="file" id="newVideoFile" accept="video/mp4" class="admin-file-input">
-          </div>
-          <div class="outreach-field">
-            <label>Position</label>
-            <select id="newVideoPosition" class="admin-select">
-              <option value="end">Add at the end</option>
-              <option value="start">Add at the beginning</option>
-            </select>
-          </div>
-          <div class="admin-progress" id="uploadProgress" style="display:none">
-            <div class="admin-progress-bar" id="uploadBar"></div>
-            <span id="uploadText">Uploading...</span>
-          </div>
-          <button class="btn btn-primary" id="addVideoBtn" style="width:100%;margin-top:12px">Upload & Add Video</button>
-        </div>
-
-        <button class="btn btn-secondary" id="adminLogout" style="width:100%;margin-top:20px">🔒 Lock Admin</button>
-      </div>
+<!-- Video player -->
+<div class="player" id="player" hidden role="dialog" aria-modal="true" aria-label="Video player">
+  <div class="player-box">
+    <div class="player-bar">
+      <span class="mono" id="playerTitle"></span>
+      <button type="button" class="player-x" id="playerClose" aria-label="Close video">✕</button>
     </div>
+    <div class="player-stage" id="playerStage"></div>
   </div>
+</div>
 
-  <!-- ======== FOOTER ======== -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-inner">
-        <a href="#" class="footer-logo">Editra.</a>
-        <p class="footer-copy">&copy; 2026 Editra. All rights reserved.</p>
-        <div class="footer-socials">
-          <a href="https://instagram.com/_editraa" target="_blank" aria-label="Instagram">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
-          </a>
-          <a href="https://x.com/_editra" target="_blank" aria-label="X">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-          </a>
-          <a href="mailto:Teameditra@gmail.com" aria-label="Email">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,4 12,13 2,4"/></svg>
-          </a>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
+<script src="app.js"></script>
+<script src="admin.js" defer></script>
 </body>
 </html>
