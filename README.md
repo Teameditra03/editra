@@ -11,4 +11,4 @@ Open **https://teameditra03.github.io/editra/#admin** (or press `Ctrl + Shift + 
 - Reorder (drag ☰ or ↑ ↓), edit, or remove videos, and change the showreel.
 - Press **Publish changes**. The site updates for visitors in about 1–2 minutes.
 
-Videos and the showreel are stored in `videos.json`. The previous version of the site is kept on the `old-site` branch.
+Videos and the showreel are stored in `videos.json`. The previous version of the site (and its old video files) is kept on the `old-site` branch.

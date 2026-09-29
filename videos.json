@@ -1,15 +1,10 @@
 {
-  "showreel": "showreel.mp4",
+  "showreel": "",
   "videos": [
-    { "title": "Apple Style", "tag": "Apple", "type": "motion", "desc": "", "tools": "", "video": "showreel.mp4", "thumbnail": "thumb-documentary.jpg" },
-    { "title": "Documentary Style", "tag": "Documentary", "type": "short", "desc": "", "tools": "", "video": "meta-video.mp4", "thumbnail": "thumb-meta.jpg" },
-    { "title": "Short Form", "tag": "Cinematic", "type": "short", "desc": "", "tools": "", "video": "wanda.mp4", "thumbnail": "" },
-    { "title": "Talking Head", "tag": "Interview", "type": "short", "desc": "", "tools": "", "video": "talking-head.mp4", "thumbnail": "thumb-talking-head.jpg" },
-    { "title": "Apple Mograph", "tag": "Motion", "type": "motion", "desc": "", "tools": "", "video": "comp-video.mp4", "thumbnail": "thumb-comp.jpg" },
-    { "title": "Cinematic Edit", "tag": "Cinematic", "type": "long", "desc": "", "tools": "", "video": "cinematic-edit.mp4", "thumbnail": "thumb-cinematic.jpg" },
-    { "title": "Motion Graphics Reel", "tag": "Motion", "type": "motion", "desc": "", "tools": "", "video": "motion-reel.mp4", "thumbnail": "thumb-motion.jpg" },
-    { "title": "UI Animations", "tag": "UI/UX", "type": "motion", "desc": "", "tools": "", "video": "social-campaign.mp4", "thumbnail": "thumb-ui.jpg" },
-    { "title": "College", "tag": "College vibes", "type": "short", "desc": "", "tools": "", "video": "comp-1.mp4", "thumbnail": "" },
-    { "title": "Editra Special", "tag": "Varsham", "type": "short", "desc": "", "tools": "", "video": "comp-1.mp4", "thumbnail": "" }
+    { "title": "Long Form Video", "tag": "YouTube", "type": "long", "desc": "A long-form YouTube edit with tight pacing, B-roll, captions and clean sound design.", "tools": "Premiere Pro", "video": "https://youtu.be/8lFvswAA7eA", "thumbnail": "" },
+    { "title": "Hook in 1 Second", "tag": "Reel", "type": "short", "desc": "A talking-head reel rebuilt around a stronger opening, punch-ins and animated captions.", "tools": "Premiere Pro · After Effects", "video": "https://drive.google.com/file/d/1zST6XsQyp1JN1FMqu8vro-16H29lV1GI/view", "thumbnail": "" },
+    { "title": "Documentary Edit", "tag": "Documentary", "type": "motion", "desc": "A documentary-style edit with a clear story arc, paced visuals and sound design.", "tools": "After Effects", "video": "https://drive.google.com/file/d/1uLILSJ2W9FBkjlBuBf8Lg7GfsVAVeSwz/view", "thumbnail": "" },
+    { "title": "Short Form", "tag": "Script · Edit", "type": "short", "desc": "A short-form video scripted and edited to hook viewers fast and hold them to the end.", "tools": "Premiere Pro · After Effects", "video": "https://drive.google.com/file/d/1UHpyAmy6kCKCFDLLl1xPxuVQk6l-ONwz/view", "thumbnail": "" },
+    { "title": "Storytelling Edit", "tag": "Story", "type": "short", "desc": "An edit built around the story: a strong opening, clear build-up and a payoff that lands.", "tools": "Premiere Pro · After Effects", "video": "https://drive.google.com/file/d/1mBRCM90kZ8xRSO5V138WsvMj7rlhRM1_/view", "thumbnail": "" }
   ]
 }

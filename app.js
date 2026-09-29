@@ -234,6 +234,8 @@ function renderWork(list){
   works.querySelectorAll(".work").forEach(el=>{
     const w = list[+el.dataset.i];
     el.addEventListener("click", e => { e.preventDefault(); openPlayer(w.video, w.title, w.type==="short"); });
+    const img = el.querySelector("img.media");
+    if (img) img.addEventListener("error", () => { img.remove(); el.querySelector(".frame").classList.remove("has-media"); });
     const v = el.querySelector("video.media");
     if (!v) return;
     v.addEventListener("loadedmetadata", () => {
